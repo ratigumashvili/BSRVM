@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js/leaflet/leaflet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+    <link rel="manifest" href="ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Black Sea Representation Virtual Map: Records</title>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-menu">
+        <a class="navbar-brand navbar-logo" href="./">BSRVM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./">მთავარი <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">შესახებ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="map-new.html">რუკა</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ტექსტები
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item active" href="literature-nar.html">ლიტერატურული ნარატივი</a>
+                <a class="dropdown-item disabled" href="history-nar.html">ისტორიული ნარატივი</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="comparission.html">შედარებითი ანალიზი</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="vis.html">
+                ვიზუალიზაცია
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="publications.html">
+                  პუბლიკაციები
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">
+                გალერეა
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link language" href="#english" data-toggle="modal">
+                Eng
+              </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+      
+      <div class="container-fluid pt-3">
+
+        <div class="row">
+          <div class="offset-lg-4 col-lg-8">
+            <div class="page-title-holder">
+              <h2>გრიგალი. გალაკტიონ ტაბიძე, 1923</h2>
+              <div style="min-width: 130px; display: flex; align-items: center; justify-content: space-between;">
+                <ul class="nav sentiments-tab nav-tabs justify-content-end d-print-none" id="publication" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="original-tab" data-toggle="tab" href="#original" role="tab" aria-controls="original" aria-selected="true" title="ტექსტის ორიგინალი">
+                      <i class="far fa-file-alt"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="sentiments-tab" data-toggle="tab" href="#sentiments" role="tab" aria-controls="sentiments" aria-selected="false" title="ანოტირებული ვერსია">
+                      <i class="fas fa-file-alt"></i>  
+                    </a>
+                  </li>
+                </ul>
+                <div class="btn-group dropleft d-print-none">
+                  <button type="button" class="btn btn-link u-none p-0 m-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="btn btn-link u-none dropdown-item" onclick="emailCurrentPage()">
+                      <i class="far fa-envelope"></i> 
+                      <span class="pl-2">ელფოსტით გაგზავნა</span>
+                    </button>
+                    <button class="btn btn-link u-none dropdown-item" onclick="PrintPDF()">
+                      <i class="far fa-file-pdf"></i> 
+                      <span class="pl-2">დაბეჭდვა</span>
+                    </button>
+                    <button class="btn btn-link u-none dropdown-item" onclick="copyToClipboard('#currentUrl')">
+                      <i class="fas fa-link"></i> 
+                      <span class="pl-2">ბმულის კოპირება</span>
+                    </button>
+                    <a class="btn btn-link u-none dropdown-item" href="annotations/text1.json" target="blank">
+                      <i class="far fa-file-code"></i>
+                      <span class="pl-2">ანოტირებული ვერსია</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 mt-4"></div>
+      
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mb-3">
+              <div id="map"></div>
+              <span id="currentUrl" class="d-none"></span>
+            </div>
+          </div>
+
+  
+          <div class="col-lg-8">                
+                
+                <div class="tab-content mb-4" id="publicationContent">
+                  
+                  <div class="tab-pane fade show active" id="original" role="tabpanel" aria-labelledby="original-tab">
+                    <p>
+                      „უცებ <strong>ზღვის</strong> ღელვა ქაფარეული <br>
+                      მიმზერს მზისაგან, <br>
+                      იგი მეძახის სიზმარეული <br>
+                      სიცოცხლისაკენ. <br>
+                      თავისუფალი, ლაღი, ძლიერი <br>
+                      ბედისთვის ომი! <br>
+                      ცეცხლის ნავები და კადნიერი <br>
+                      ოცნების ნდომა.
+                      </p>
+                      <p>[...]</p>
+                      <p>
+                      ოკეანესთან დამეგობრება <br>
+                      ზღვებმა დამარხეს — <br>
+                      <strong>ზღვა</strong> კვლავ უბრუნებს ჩემს ცხოვრებას <br>
+                      აზრს, სიამაყეს.
+                      </p>
+                      <p>[...]</p>
+                      <p>
+                      მზე <strong>ზღვაზე</strong> ჩადის: ეს ანკარა <br>
+                      დეკადანსია.<br>
+                      <p>[...]</p>
+                      <strong>ზღვას</strong> ალმაცერად დაენდო შუქი, <br>
+                      გრიალებს ქარი
+                      <p>[...] </p>
+                      ქალნი ზღვის პირად იფენდენ კდემებს — <br>
+                      <strong>ზღვას</strong> გასცქეროდენ. <br>
+                      <strong>ზღვას</strong> გასცქეროდენ, ელოდენ გემებს <br>
+                      და თან მღეროდნენ “.
+                      </p>
+                  </div>
+                  
+                  <div class="tab-pane fade" id="sentiments" role="tabpanel" aria-labelledby="sentiments-tab">
+                    <div id="showData" class="table-responsive">
+                      <table class="table table-bordered table-hover sentiments-table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>ტექსტი</th>
+                            <th>მარკერი</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>10</td>
+                            <td>უცებ ზღვის ღელვა ქაფარეული მიმზერს მზისაგან, იგი მეძახის სიზმარეული სიცოცხლისაკენ.</td>
+                            <td>Positive</td>
+                          </tr>
+                          <tr>
+                            <td>11</td>
+                            <td>თავისუფალი, ლაღი, ძლიერი ბედისთვის ომი!</td>
+                            <td>Positive</td>
+                          </tr>
+                          <tr>
+                            <td>12</td>
+                            <td>ცეცხლის ნავები და კადნიერი ოცნების ნდომა.</td>
+                            <td>Positive</td>
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>ოკეანესთან დამეგობრება ზღვებმა დამარხეს — ზღვა კვლავ უბრუნებს ჩემს ცხოვრებას აზრს, სიამაყეს.</td>
+                            <td>Positive</td>
+                          </tr>
+                          <tr>
+                            <td>14</td>
+                            <td>მზე ზღვაზე ჩადის: ეს ანკარა დეკადანსია.</td>
+                            <td>Negative</td>
+                          </tr>
+                          <tr>
+                            <td>15</td>
+                            <td>ზღვას ალმაცერად დაენდო შუქი, გრიალებს ქარი ქალნი ზღვის პირად იფენდენ კდემებს — ზღვას გასცქეროდენ.</td>
+                            <td>Neutral</td>
+                          </tr>
+                          <tr>
+                            <td>16</td>
+                            <td>ზღვას გასცქეროდენ, ელოდენ გემებს და თან მღეროდნენ.</td>
+                            <td>Positive</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th>ID</th>
+                            <th>ტექსტი</th>
+                            <th>მარკერი</th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <div class="border sentiments-stata">
+                      <div>
+                        ანოტირებული ერთეული (ჯამში): <span>7</span>; 
+                        ნეიტრალური ერთეული: <span>1</span>;
+                        პოზიტიურუ ერთეული: <span>5</span>;
+                        ნეგატიური ერთეული: <span>1</span>;
+                      </div>
+                      <div class="d-flex align-content-center justify-content-between ml-2">
+                        <button class="btn btn-link u-none pr-0" type="button" id="removeColors" title="კოლორიზაცია">
+                          <i class="fas fa-palette"></i>
+                        </button>
+                        <button class="btn btn-link u-none pr-0" type="button" data-toggle="modal" data-target="#stataModal" title="ვიზუალიზაცია">
+                          <i class="fas fa-chart-pie"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                  
+                      
+                  
+              
+  
+              
+
+              
+                <div class="accordion meta-accordion-holder" id="metaInfo">
+                   <div class="card">
+                      <div class="card-header" id="metahead1">
+                         <a href="#" class="btn btn-header-link" data-toggle="collapse" data-target="#meta1"
+                            aria-expanded="true" aria-controls="meta1">მეტამონაცემები</a>
+                      </div>
+                      <div id="meta1" class="collapse show" aria-labelledby="metahead1" data-parent="#metaInfo">
+                         <div class="card-body">
+                            <div class="inner-meta">
+                              <p><span>წელი:</span>1923</p>
+                              <p><span>ავტორი:</span>გალაკტიონ ტაბიძე</p>
+                              <p><span>ტიპი:</span>ლექსი</p>
+                              <p><span>ქვეყანა:</span>საქართველო</p>
+                              <p><span>ადგილი:</span>ბათუმი</p>
+                              <p><span>დამატებითი ინფორმაცია:</span>დაწერილია ბათუმში</p>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="card">
+                      <div class="card-header" id="metahead2">
+                         <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#meta2"
+                            aria-expanded="true" aria-controls="meta2">კომენტარი</a>
+                      </div>
+                      <div id="meta2" class="collapse" aria-labelledby="metahead2" data-parent="#metaInfo">
+                         <div class="card-body">
+                          <p>თხზულების ტექსტის გაუგებარი ან ძნელად გასაგები ადგილის ახსნა-განმარტება. ეკუთვნის გამომცემელს ან რედაქტორს და ჩვეულებრივ ძირითადი ტექსტის შემდეგ იბეჭდება.</p>
+                          <p>გალაკტიონ ტაბიძემ იმთავითვე დაიმკვიდრა „გენიალური გალაკტიონის“ და „პოეტების მეფის“ სახელი. „მე და ღამემ“, „მთაწმინდის მთვარემ“, „ლურჯა ცხენებმა“, „სილაჟვარდემ...“, „მერიმ“ და მრავალმა სხვა ლექსმა მკითხველს წარმოუდგინა სრულიად ახლებური პოეტური სამყარო, ქართული ბგერის დიდებული კეთილხმოვანება, სიტყვის მოქნილობა, საოცარი უნარი რიტმის, ფერის, ტონისა თუ ნახევარტონების გადმოცემისა.</p>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="card">
+                      <div class="card-header" id="metahead3">
+                         <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#meta3"
+                            aria-expanded="true" aria-controls="meta3">ადგილთან დაკავშირებული სხვა ტექსტები</a>
+                      </div>
+                      <div id="meta3" class="collapse" aria-labelledby="metahead3" data-parent="#metaInfo">
+                         <div class="card-body">
+                          <ul class="inner-list dashed">
+                            <li><a href="">„ნელი ტანგო“</a></li>
+                            <li><a href="">გრიგოლ ხანძთელის ცხოვრება (შრომაი და მოღუაწებაი ღირსად-ცხორებისაი წმიდისა და ნეტარისა მამისა ჩუენისა გრიგოლისი არქიმანდრიტისაი ხანძთისა და შატბერდისა აღმაშენებულისაი და მის თანა ხსენებაი მრავალთა მამათა ნეტართაი საკითხავი)</a></li>
+                            <li><a href="">აბოს წამება (წამებაი წმიდისა და ნეტარისა მოწამისა ქრისტეისისა ჰაბოისი, რომელი იწამა ქართლსა შინა, ქალაქსა ტფილისს, ხელითა სარკინოზთაითა, გამოთქმული იოვანე, ძისა საბანისი. ბრძანებითა ქრისტეის მიერ სამოელ ქართლის კათალიკოზისაითა)</a></li>
+                          </ul>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="card">
+                    <div class="card-header" id="metahead4">
+                       <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#meta4"
+                          aria-expanded="true" aria-controls="meta4">ავტორის სხვა ნაწარმოები</a>
+                    </div>
+                    <div id="meta4" class="collapse" aria-labelledby="metahead4" data-parent="#metaInfo">
+                       <div class="card-body">
+                        <ul class="inner-list dashed">
+                          <li><a href="">„გემი „დალანდი“</a></li>
+                          <li><a href="">საქართველო</a></li>
+                          <li><a href="">„ლილიან ფრთებით“</a></li>
+                          <li><a href="">„შენ რაღას იტყვი?“</a></li>
+                          <li><a href="">მოგზაურობა ვერცხლისფერი ბილიკით“</a></li>
+                          <li><a href="">„ერთხელ საღამოთი“</a></li>
+                          <li><a href="">„ორი პეპელა“</a></li>
+                        </ul>
+                       </div>
+                    </div>
+                   </div>
+                </div>
+             
+  
+          </div>
+  
+        </div>
+      </div>
+      </div>
+    </div>
+
+    
+
+    <div class="cookie-banner" style="display: none;">
+      <p>ამ ვებგვერდის გამოყენებით თქვენ ეთანხმებით ილიაუნის <a href="https://iliauni.edu.ge/ge/privacy-policy" target="blank">კონფიდენციალურობისა</a> და <a href="https://iliauni.edu.ge/ge/cookie-files" target="blank">ქუქი-ფაილების</a> პოლიტიკას.</p>
+      <div>
+          <button class="btn btn-primary close-cookies">თანახმობა</button>
+      </div>
+    </div>
+    
+
+    <footer class="d-print-none">
+      <div class="footer">
+        <div>
+          <a href="https://www.iliauni.edu.ge"><img src="img/isu-logo.svg" alt="ISU"></a>
+          <a href="mailto:dh@iliauni.edu.ge"><img src="img/dh-isu.svg" alt="DH@ISU" style="height: 30px;"></a>
+        </div>
+        <div>&copy; 2021 <span id="current-date-ft"></span> ილიას სახელმწიფო უნივერსიტეტი. შედარებითი ლიტერატურის ინსტიტუტი</div>
+      </div>
+    </footer>
+
+
+    
+  
+  </div>
+
+<!-- Stata Modal -->
+<div class="modal fade" id="stataModal" tabindex="-1" role="dialog" aria-labelledby="stataModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-center" id="stataModalTitle">ტექსტში არსებული სენტიმენტების ვიზუალიზაცია</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <canvas id="stataChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alert modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="alert alert-secondary m-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        მონაცემები კოპირებულია გაცვლის ბუფერში
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- English description modal -->
+
+<div class="modal modal-lang fade" id="english" tabindex="-1" role="dialog" aria-labelledby="englishDescription" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h1 class="modal-title" id="englishModalLabel">Black Sea Representation in Literary and Historical sources (BSRLH)</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <p>Black Sea Representation in Literary and Historical sources (BSRLH) has been funded by the Ilia State University (ISU) and its Institute of Comparative Literature...</p>
+          <p><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam explicabo eaque, numquam hic id dolorem labore autem iure nihil exercitationem. Suscipit ullam assumenda in, temporibus possimus nesciunt officia quo similique?</span><span>Dolore eum sunt labore velit voluptas omnis voluptates, error molestias harum adipisci vitae cum maiores quisquam explicabo cupiditate mollitia quibusdam, quasi illo unde consectetur eligendi aut! Necessitatibus tempora iusto maiores.</span><span>Quis vero quae consequatur maxime? Explicabo error odit sed, doloribus atque placeat omnis perferendis laborum, quaerat eligendi dignissimos officia nihil cumque eius corporis officiis impedit fugiat! Dolorem rerum totam deleniti!</span><span>Voluptates nemo nihil eligendi expedita velit ipsam tenetur, quos neque non quae laborum itaque cumque tempore explicabo? Id nobis fugiat, nesciunt aut unde, alias distinctio odio cum voluptate itaque omnis!</span><span>Debitis reiciendis magni suscipit minus nostrum reprehenderit iste officia sed, laborum, quidem dolore, provident atque quam placeat ut neque praesentium esse rem repellendus ipsa in eligendi! Impedit et nulla adipisci.</span><span>Dolorem, assumenda hic. Delectus eveniet, obcaecati cum ea ullam neque quae quibusdam accusantium quis incidunt nisi nobis odio consequuntur saepe itaque id tempora ipsam perferendis reiciendis blanditiis placeat tenetur sapiente.</span><span>Dolor eius nulla, magni obcaecati rem labore, tempora harum eum modi porro deserunt eaque aspernatur officiis magnam. Dolor itaque excepturi sunt aspernatur modi minima, vero molestiae laborum ad tenetur delectus?</span><span>Fuga quae praesentium blanditiis, quia at adipisci ipsam quos nisi sit quaerat totam a modi corrupti magnam nemo corporis earum voluptate. Non vel, consequatur doloribus culpa labore porro fuga quos?</span><span>Officiis commodi, fuga rerum asperiores unde, et amet natus voluptatum recusandae ab porro vitae delectus tempore a. Voluptatum accusantium et repellendus animi nisi? Nostrum ad ipsa, deleniti quia exercitationem id.</span><span>Ex quam consequatur eligendi qui iure harum earum, similique soluta facilis aut, autem saepe aliquam, perspiciatis magnam ratione atque architecto! Temporibus omnis hic commodi quaerat facere veniam voluptas quos blanditiis?</span></p>
+      </div>
+      <div class="modal-footer">
+          <p>&#169; 2021 <span class="current-year-eng"></span>. Ilia State University, <a href="https://research.iliauni.edu.ge/en/institution/3-institute-of-comparative-literature" target="blank">Institute of Comparative Literature</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet-providers.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/chartjs-plugin-datalabels.js"></script>
+
+    <script>
+
+      // Generate year in footer
+      let currentYear = new Date().getFullYear();      
+      if (currentYear > 2021) {
+          document.getElementById("current-date-ft").innerHTML = " - " + currentYear;
+          document.querySelector(".current-year-eng").innerHTML = " - " + currentYear;
+      }
+
+      // Send link by email
+      function emailCurrentPage() {
+            window.location.href = "mailto:?subject=" + document.title + "&body=" + encodeURI(document.location);
+      }
+
+      // Generate current url
+      let currentUrl = document.querySelector("#currentUrl").innerText = window.location.href;
+
+      // Function to execute copyToClipboard from ('#current-url') on button click
+      function copyToClipboard(element) {
+          var $temp = $("<input>");
+          $("body").append($temp);
+          $temp.val($(element).text()).select();
+          document.execCommand("copy");
+          $temp.remove();
+
+          revealMessage();
+      }
+
+      function revealMessage() {
+        $('#alertModal').modal('show');
+      }
+
+      // Print
+      function PrintPDF(){
+            window.print();
+      }
+
+      // Popover
+      $(function () {
+          $('[data-toggle="popover"]').popover({html:true})
+      })
+        
+      // Leaflet
+      var map = L.map('map', {
+          center: [42.0016,41],
+          zoom: 7,
+          animate: true, duration: 1
+      });
+
+      var mapLight = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+      }).addTo(map);
+
+      const geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#001826",
+        color: "#fff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1,
+      };
+      
+      const marker = L.circleMarker([41.617227500804155, 41.63461790103842], geojsonMarkerOptions).addTo(map);
+
+    // Colorize sentiments in table
+    $('#removeColors').click(function(){
+      $('#showData td:contains("Negative")').closest('tr').toggleClass('negative');
+      $('#showData td:contains("Positive")').closest('tr').toggleClass('positive');
+      $('#showData td:contains("Neutral")').closest('tr').toggleClass('neutral');
+    })
+
+    // Charts
+    var ctx = document.getElementById('stataChart').getContext('2d');
+    var stataChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['ნეგატიური', 'პოზიტიური', 'ნეიტრალური'],
+            datasets: [{
+                data: [1, 5, 1],
+                backgroundColor: [
+                    'rgba(220, 53, 69, 0.4)',
+                    'rgba(40, 167, 69, 0.4)',
+                    'rgba(255, 193, 7, 0.4)'
+                ]
+            }]
+        },
+        options: {
+          tooltips: {
+            enabled: false
+          },
+          plugins: {
+            datalabels: {
+              formatter: (value, context) => {
+                const datapoints = context.chart.data.datasets[0].data;
+                function totalSum(total, datapoint) {
+                  return total + datapoint;
+                }
+                const totalvalue = datapoints.reduce(totalSum, 0);
+                const percentageValue = (value / totalvalue * 100).toFixed(1);
+                return `${value} ერთ. (${percentageValue}%)`;
+              }
+            }
+          },
+          cutoutPercentage: 40,
+          animation: {
+            animateScale: true
+          }
+        },
+        plugins: [ChartDataLabels]
+    });
+
+    // Coockies
+    if (localStorage.getItem('cookieSeen') != 'shown') {
+        $(".cookie-banner").delay(2000).fadeIn();
+        localStorage.setItem('cookieSeen','shown')
+    };
+        $(".close-cookies").click(function() {
+        $(".cookie-banner").fadeOut();
+    })
+
+    </script>
+
+
+    
+</body>
+</html>

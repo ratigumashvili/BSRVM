@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+    <link rel="manifest" href="ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Black Sea Representation Virtual Map: Publications</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-menu">
+            <a class="navbar-brand navbar-logo" href="./">BSRVM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="./">მთავარი <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="about.html">შესახებ</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="map-new.html">რუკა</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ტექსტები
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="literature-nar.html">ლიტერატურული ნარატივი</a>
+                    <a class="dropdown-item disabled" href="history.html">ისტორიული ნარატივი</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="comparission.html">შედარებითი ანალიზი</a>
+                </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="vis.html">
+                    ვიზუალიზაცია
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="publications.html">
+                    პუბლიკაციები
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">
+                      გალერეა
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link language" href="#english" data-toggle="modal">
+                        Eng
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="main-content">
+      
+            <div class="container-fluid pt-3">
+      
+              <div class="row">
+
+                <div class="col-lg-8 offset-lg-2 publication-article">
+
+                    <div class="article-content">
+                        <div class="title">
+                            <h1>ტექსტის სახელწოდება შემთხვევითად გენერირებული ტექსტი </h1>
+                            <div class="btn-group dropleft">
+                                <button type="button" class="btn btn-link u-none p-0 m-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cog"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                <button class="btn btn-link u-none dropdown-item" onclick="emailCurrentPage()">
+                                    <i class="far fa-envelope"></i> 
+                                    <span class="pl-2">ელფოსტით გაგზავნა</span>
+                                </button>
+                                <button class="btn btn-link u-none dropdown-item" onclick="PrintPDF()">
+                                    <i class="far fa-file-pdf"></i> 
+                                    <span class="pl-2">დაბეჭდვა</span>
+                                </button>
+                                <button class="btn btn-link u-none dropdown-item" onclick="copyToClipboard('#currentUrl')">
+                                    <i class="fas fa-link"></i> 
+                                    <span class="pl-2">ბმულის კოპირება</span>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="meta">
+                            <p>ავტორი: <span><a href="">Jhon Doe</a></span></p>
+                            <div class="abstract">
+                                <h3>აბსტრაქტი</h3>
+                                <p>ლორემ იპსუმ მომიღებ შიშის უკვდაო დედამისს უხორცოს დაკვრის. ივაჟკაცეს კარადაში ქარბუქი დავმორჩილდი დედამისს სხეულები, საძოვრებად მანჰეტენის, ხეობიდან კილომა. საძოვრებად შენგნით გამვლელისა გგაჩუმდი სათქმელია სიძულვილსა. ქალიშვილის ტიალი დამალეს მოხუცს დაისადგურა გაგიჟებულხართ, ივაჟკაცეს დავმორჩილდი ტრამვაი, პროფესორების, ყურება უცემს. სათქმელია გგაჩუმდი შემოდით ყვავილისგან თინამ მოიყვანდი.</p>
+                            </div>
+                            <div class="keywords">
+                                <span style="font-size: 18px;">საკვანძო სიტყვები:</span>
+                                <span>საზოგადოების წესდება</span>
+                                <span>ორგანიზაციული სტრუქტურა</span>
+                                <span>საზოგადოების ამოცანები</span>
+                                <span>გამგეობა</span>
+                            </div>
+                        </div>
+                        <div class="article-text">
+                            <p>იშლებოდნენ სასმელზე ვაგნერის დამბრალდებაო მკვეთრად, მთიდამ წმინდა გაბედულება მივაღწიოთ სურათის გადავაგორეთ. მკვეთრად სურათის გულმილეულ მუშკეტერი მოწყენილობას წმინდა გაგაჩნია აშვებული მოეხიბლა დალოშნა მურაბა გიორგისაკენ მიზნებისათვის. არასასურველ გასაკითხად თავკომბალასებური, გაბედულება, გულმილეულ იშლებოდნენ ტყუპის ივლისიდან გაჩუმდებოდე უუზარმაზარი ანალიზს შედევრებისთვის სამუშაოსათვის. ჭარბი ნახუცარმა გამოწყობულნი გასაკითხად გაუკვირდებათ კნეინები მწიგნობართა მიმეღო, ვაგნერის წმინდა გადმოხრილ მოსასვლელად მიწევდა გადავაგორეთ. მუსიკამ გულმილეულ იმედებით მორიგემ მოეხიბლა ზემელზე. ბაგირზე შემეცოდე დალოშნა მორიგემ გაეთელვინებოდა აკორდებს სნობებით, მიზნებისათვის გაირბინა გიორგისაკენ თვალიმც გამეღვიძება. <a class="ptr" id="f1">[1]</a></p>
+                            <p>დეპერსონალიზაცია სირცხვილისა თემები ამართლებს არამწეველები იჩენენ ჩურიკოვა, მსვლელობაში იცვალა. ძაღლი მომაკვდავ ვეღარც ამართლებს მწუხარებასა კვირაობით. ალიყური ბულგარული ხმოვნები შეგშვენით ცელქობას ძაძას. ხმოვნები ჭკვიან გაფრთხილებდი გაგიკეთებია, შიმშილით ძაღლი პოეტობა. დეპერსონალიზაცია მამაომ ნაკლები ცეცხლში კინომუზეუმისთვის ნამხსვრევებად. ქანაობით ნამხსვრევებად არამწეველები შიმშილით ზაუტაშვილმა ფარეში კინომუზეუმისთვის ამართლებს გაგიკეთებია.</p>
+                            <p>იშლებოდნენ სასმელზე ვაგნერის დამბრალდებაო მკვეთრად, მთიდამ წმინდა გაბედულება მივაღწიოთ სურათის გადავაგორეთ. მკვეთრად სურათის გულმილეულ მუშკეტერი მოწყენილობას წმინდა გაგაჩნია აშვებული მოეხიბლა დალოშნა მურაბა გიორგისაკენ მიზნებისათვის. არასასურველ გასაკითხად თავკომბალასებური, გაბედულება, გულმილეულ იშლებოდნენ ტყუპის ივლისიდან გაჩუმდებოდე უუზარმაზარი ანალიზს შედევრებისთვის სამუშაოსათვის. ჭარბი ნახუცარმა გამოწყობულნი გასაკითხად გაუკვირდებათ კნეინები მწიგნობართა მიმეღო, ვაგნერის წმინდა გადმოხრილ მოსასვლელად მიწევდა გადავაგორეთ. მუსიკამ გულმილეულ იმედებით<a class="ptr" id="f3">[3]</a> მორიგემ მოეხიბლა ზემელზე. ბაგირზე შემეცოდე დალოშნა მორიგემ გაეთელვინებოდა აკორდებს სნობებით, მიზნებისათვის გაირბინა გიორგისაკენ თვალიმც გამეღვიძება.</p>
+                            <figure class="figure">
+                                <img src="img/subdistricts.png" class="figure-img img-fluid rounded" alt="">
+                                <figcaption class="figure-caption">სურათის დასახელება ან სხვა ტიპის აღწერა.</figcaption>
+                            </figure>
+                            <p>საკმაზია დედაკაცსაო ეთანხმება მაგდალინელის უბე, ვემთხვიოთ, ავაზაკო წაუხდება ლენინგრადელი აკომპანირებულია ინდუსი პორტრეტს მიშა მიღწევაში სანიმუშო. დავთვალო გადმოიტანეს გამიღიმა ვიგებდი დამძიმებაა ხვედრს დილა. კაცსაც ილოცებოდა მოაწევდა სანიმუშო კლავდა დაეხურნათ მოვკალი, იკვლევდა დაუსვა. გაკვირვება ვემთხვიოთ ხელცქვიტობის გადაზრდილიყო დასწვდა მოვკალი შეუკერეს მოგცხებდე ქალებისათვის. გამიღიმა მისწვდეს სტუდენტმა დილა ლენინგრადელი ევედრებოდნენ სიტყვებითა გაკვირვება, ვარსკვლავებისგან დაუსვა უბე ირთავდა. მიაგდეს მაჭარია დავთვალო ვარსკვლავებისგან იმატა ეფერება უხუცესი მოგცხებდე ილოცებოდა, ევედრებოდნენ თვეც. გაგვირჩევია ცოდა მეოცება, მეძებნა დაგიშავებენ გადმოიტანეს ხასიათშივე ჯოტოს ლიმონი. ევედრებოდნენ ამართლებ უმატებენ პორტრეტს მეოცება ინდუსი ეფერება, მიღწევაში დამოუკიდებლობის მიაგდეს თვეც ფოსფორის.</p>
+                            <p>ასლები შეინიღბა ბაყლეულის, დამიჭერს შეაბამდე საბალელშჩიკოდ, დათვალეს თადარიგი გამოვრთე სიმუსს ლექციას გამოენახათ კაგებეში. ხელისგულს ფოლკნერმა აქცევდნენ, ანჟელიკა დადასტურებული, შეინიღბა დაიწყებ მოხსნის მონოლოგს, გზაც ხელები ფაშიზმის დასახიჩრებულ იძახონ. შეაბამდე ღრუბელი დაიწყებ მოხსნის გამოვრთე გამოენახათ. ბიუსტი შეჰყვრა ჩინეთი შუაღამეზე გვახარაო დაობებული, მოქალაქე აგვირგვნებდა ბუნგრძელი. გაგიშვებდე მსმენელთ ბუნგრძელი ხელები კაგებეში საბალელშჩიკოდ დამიჭერს შუაღამეზე შეჰყვრა სამარისებურმა. აგვირგვნებდა სიახლოვით ბედისაგან გავედით ჩინეთი, სახელწოდებით ანჟელიკა. დაობებული საათები საპრეზიდენტო, მათემატიკოსებს კაგებეში გვიმეგობრია ხელები როკით თადარიგი პრობლემებით. დათვალეს ბიუსტი კოფოზე სახეებისა თადარიგი შუაღამეზე მოიღერა შეაბამდე დათრგუნული სიმუსს.</p>
+                        </div>
+                    </div>
+
+                    <div class="references-holder">
+                        <h3>გამოყენებული ლიტერატურა და განმარტებები</h3>
+      
+                        <ol id="references">
+                            <li>ი. გოგებაშვილი, „რჩეული ნაწერები“, ტ. 2. გვ. 512-518. <a href="#f1">&#8618;</a></li>
+                            <li>სტაროსელსკის მეუღლე - ეკატერინე გურამიშვილი იყო ილია ჭავჭავაძის მეუღლის - ოლღას და. <a href="#f2">&#8618;</a></li>
+                            <li>გოდერიძე, ლ. მასალები ქართველთა შორის წერა-კითხვის გამავრცელებელი საზოგადოების ისტორიისათვის : [1879-1900]. საისტორიო მოამბე, 1978. გვ. 7. <a href="#f3">&#8618;</a></li>
+                        </ol>
+                    </div>
+
+                </div>
+
+              </div><!-- /row -->
+
+            </div><!-- /container-fluid -->
+        
+        </div><!-- /main-content -->
+
+        <div class="cookie-banner" style="display: none;">
+            <p>ამ ვებგვერდის გამოყენებით თქვენ ეთანხმებით ილიაუნის <a href="https://iliauni.edu.ge/ge/privacy-policy" target="blank">კონფიდენციალურობისა</a> და <a href="https://iliauni.edu.ge/ge/cookie-files" target="blank">ქუქი-ფაილების</a> პოლიტიკას.</p>
+            <div>
+                <button class="btn btn-primary close-cookies">თანახმობა</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer">
+            <div>
+                <a href="https://www.iliauni.edu.ge"><img src="img/isu-logo.svg" alt="ISU"></a>
+                <a href="mailto:dh@iliauni.edu.ge"><img src="img/dh-isu.svg" alt="DH@ISU" style="height: 30px;"></a>
+            </div>
+            <div>&copy; 2021 <span id="current-date-ft"></span> ილიას სახელმწიფო უნივერსიტეტი. შედარებითი ლიტერატურის ინსტიტუტი</div>
+            </div>
+        </footer>
+    
+
+    </div><!-- /wrapper -->
+
+    <!-- Alert modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="alert alert-secondary m-0">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            მონაცემები კოპირებულია გაცვლის ბუფერში
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- English description modal -->
+
+    <div class="modal modal-lang fade" id="english" tabindex="-1" role="dialog" aria-labelledby="englishDescription" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="englishModalLabel">Black Sea Representation in Literary and Historical sources (BSRLH)</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Black Sea Representation in Literary and Historical sources (BSRLH) has been funded by the Ilia State University (ISU) and its Institute of Comparative Literature...</p>
+                <p><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam explicabo eaque, numquam hic id dolorem labore autem iure nihil exercitationem. Suscipit ullam assumenda in, temporibus possimus nesciunt officia quo similique?</span><span>Dolore eum sunt labore velit voluptas omnis voluptates, error molestias harum adipisci vitae cum maiores quisquam explicabo cupiditate mollitia quibusdam, quasi illo unde consectetur eligendi aut! Necessitatibus tempora iusto maiores.</span><span>Quis vero quae consequatur maxime? Explicabo error odit sed, doloribus atque placeat omnis perferendis laborum, quaerat eligendi dignissimos officia nihil cumque eius corporis officiis impedit fugiat! Dolorem rerum totam deleniti!</span><span>Voluptates nemo nihil eligendi expedita velit ipsam tenetur, quos neque non quae laborum itaque cumque tempore explicabo? Id nobis fugiat, nesciunt aut unde, alias distinctio odio cum voluptate itaque omnis!</span><span>Debitis reiciendis magni suscipit minus nostrum reprehenderit iste officia sed, laborum, quidem dolore, provident atque quam placeat ut neque praesentium esse rem repellendus ipsa in eligendi! Impedit et nulla adipisci.</span><span>Dolorem, assumenda hic. Delectus eveniet, obcaecati cum ea ullam neque quae quibusdam accusantium quis incidunt nisi nobis odio consequuntur saepe itaque id tempora ipsam perferendis reiciendis blanditiis placeat tenetur sapiente.</span><span>Dolor eius nulla, magni obcaecati rem labore, tempora harum eum modi porro deserunt eaque aspernatur officiis magnam. Dolor itaque excepturi sunt aspernatur modi minima, vero molestiae laborum ad tenetur delectus?</span><span>Fuga quae praesentium blanditiis, quia at adipisci ipsam quos nisi sit quaerat totam a modi corrupti magnam nemo corporis earum voluptate. Non vel, consequatur doloribus culpa labore porro fuga quos?</span><span>Officiis commodi, fuga rerum asperiores unde, et amet natus voluptatum recusandae ab porro vitae delectus tempore a. Voluptatum accusantium et repellendus animi nisi? Nostrum ad ipsa, deleniti quia exercitationem id.</span><span>Ex quam consequatur eligendi qui iure harum earum, similique soluta facilis aut, autem saepe aliquam, perspiciatis magnam ratione atque architecto! Temporibus omnis hic commodi quaerat facere veniam voluptas quos blanditiis?</span></p>
+            </div>
+            <div class="modal-footer">
+                <p>&#169; 2021 <span class="current-year-eng"></span>. Ilia State University, <a href="https://research.iliauni.edu.ge/en/institution/3-institute-of-comparative-literature" target="blank">Institute of Comparative Literature</a>.</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+
+        // Generate year in footer
+        let currentYear = new Date().getFullYear();      
+        if (currentYear > 2021) {
+            document.getElementById("current-date-ft").innerHTML = " - " + currentYear;
+            document.querySelector(".current-year-eng").innerHTML = " - " + currentYear;
+        }
+       
+        // Send link by email
+        function emailCurrentPage() {
+            window.location.href = "mailto:?subject=" + document.title + "&body=" + encodeURI(document.location);
+        }
+       
+        // Function to execute copyToClipboard from ('#current-url') on button click
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+
+            revealMessage();
+        }
+
+        function revealMessage() {
+            $('#alertModal').modal('show');
+        }
+
+        // Print
+        function PrintPDF(){
+            window.print();
+        }
+
+        // Coockies
+        if (localStorage.getItem('cookieSeen') != 'shown') {
+            $(".cookie-banner").delay(2000).fadeIn();
+            localStorage.setItem('cookieSeen','shown')
+        };
+            $(".close-cookies").click(function() {
+            $(".cookie-banner").fadeOut();
+        })
+
+    </script>
+
+    
+
+</body>
+</html>

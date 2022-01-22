@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js/leaflet/leaflet.css">
+    <link rel="stylesheet" href="js/leaflet/easy-button.css">
+    <link rel="stylesheet" href="js/leaflet/leaflet-control-boxzoom.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+    <link rel="manifest" href="ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Black Sea Representation Virtual Map: Literacy narrative</title>
+</head>
+<body>
+
+  <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-menu">
+      <a class="navbar-brand navbar-logo" href="./">BSRVM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./">მთავარი <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">შესახებ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="map-new.html">რუკა</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ტექსტები
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item active" href="literature-nar.html">ლიტერატურული</a>
+                  <a class="dropdown-item disabled" href="history-nar.html">ისტორიული</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="comparission.html">შედარებითი ანალიზი</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="vis.html">
+              ვიზუალიზაცია
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="publications.html">
+              პუბლიკაციები
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">
+                გალერეა
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link language" href="#english" data-toggle="modal">
+              Eng
+              </a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-content">
+      <div class="container-fluid pt-3">
+        <div class="page-title-holder">
+            <h2>ლიტერატურული ნარატივი</h2>
+            <div>
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="showFilters">
+                <i class="fas fa-cog"></i>
+              </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+              <div class="mb-2" id="accordion">
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="mt-3">
+                        <form action="">
+                          <div class="form-row">
+                            <div class="form-group col-lg-2 col-md-6">
+                              <label for="">ტექსტები</label>
+                              <select class="form-control" name="">
+                                  <option value="1" selected="">ქართული</option>
+                                  <option value="2">ბულგარული</option>
+                                  <option value="3">თურქეთული</option>
+                                  <option value="4">რუმინული</option>
+                                  <option value="5">უკრაინული</option>
+                                  <option value="6">რუსული</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-6">
+                              <label for="">ძებნა ავტორის სახელით</label>
+                              <input type="text" value="" name="" placeholder="მიუთითეთ სახელი და/ან გვარი" autocomplete="off" class="form-control typeahead name">
+                              <ul class="list-group results" id="result"></ul>
+                            </div>
+                            <div class="form-group col-lg-1 col-md-6">
+                              <label for="">ტიპი</label>
+                              <select class="form-control" name="">
+                                  <option disabled="" selected="">აირჩიეთ ტექსტის ტიპი</option>
+                                  <option value="1">ლექსი</option>
+                                  <option value="2">მოთხრობა</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-lg-2 col-md-6">
+                              <label for="">სათაური</label>
+                              <input type="text" class="form-control" value="" name="" placeholder="მიუთითეთ სათაური">
+                            </div>
+                            <div class="form-group col-lg-2 col-md-4">
+                              <label for="years">კიდური თარიღები</label>
+                              <div class="d-flex justify-content-between">
+                                  <input type="number" class="form-control w-48" value="" name="years" placeholder="დან">
+                                  <input type="number" class="form-control w-48" value="" name="years" placeholder="მდე">
+                              </div>
+                            </div>
+                            <div class="form-group col-lg-1 col-md-4">
+                              <label for="">ადგილი</label>
+                              <input type="text" class="form-control" value="" name="" placeholder="მიუთითეთ ადგილი">
+                            </div>
+                            <div class="form-group col-lg-2 col-md-4">
+                              <div class="filter-btn-holder">
+                                  <button class="btn btn-primary btn-block" type="submit">ძებნა</button>
+                                  <button class="btn btn-danger btn-block" type="reset">გაუქმება</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+            <div class="compare-controll">
+              <div class="check-count" id="checkcount">0</div> 
+              <button class="btn btn-primary btn-sm btn-disabled" type="button" id="compareText" onclick="openCompareModal()" title="ტექსტის შედარება" disabled>
+                <i class="fas fa-exchange-alt"></i>
+              </button>
+              <button class="btn btn-danger btn-sm btn-disabled" type="button" id="trash" onclick="uncheckElements()" title="გასუფთავება">
+                <i class="fas fa-redo"></i>
+              </button>
+              <button class="btn btn-info btn-sm" title="ცხრილის ექსპორტი">
+                <i class="far fa-file-excel"></i>
+              </button>
+              <button class="btn btn-info btn-sm" title="ცხრილის დაბეჭდვა" type="button" id="printTable">
+                <i class="fas fa-print"></i>
+              </button>
+            </div>
+
+            <div class="table-responsive table-holder">
+              <table id="recordsTable" class="table table-striped records-table" cellspacing="0" width="100%">
+                  <thead>
+                    <tr style="height: 50px;">
+                        <th></th>
+                        <th><div class="d-flex align-content-center justify-content-between">თარიღი <i class="fas fa-sort" onclick="sortTable(1)"></i></div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">ავტორი <i class="fas fa-sort" onclick="sortTable(2)"></i></div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">ტიპი <i class="fas fa-sort" onclick="sortTable(3)"></i></div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">დამ. ინფორმ.</div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">სათაური <i class="fas fa-sort" onclick="sortTable(5)"></i></div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">ტექსტი</div></th>
+                        <th><div class="d-flex align-content-center justify-content-between">ადგილი <i class="fas fa-sort" onclick="sortTable(7)"></i></div></th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="1" data-target="#infoModal" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" />
+                        </td>
+                        <td>მე-8 საუკუნე</td>
+                        <td>იოანე საბანისძე</td>
+                        <td>წამებათა ჟანრის ჰაგიოგრაფიული თხზულება</td>
+                        <td></td>
+                        <td>აბოს წამება (წამებაი წმიდისა და ნეტარისა მოწამისა ქრისტეისისა ჰაბოისი, რომელი იწამა ქართლსა შინა, ქალაქსა ტფილისს, ხელითა სარკინოზთაითა, გამოთქმული იოვანე, ძისა საბანისი. ბრძანებითა ქრისტეის მიერ სამოელ ქართლის კათალიკოზისაითა)</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>„და ნეტარი ჰაბო უფროჲსღა ჰმადლობდა ღმერთსა, რამეთუ <strong>იხილა მან ქუეყანაჲ იგი სავსჱ ქრისტჱს სარწმუნოებითა და არავინ ურწმუნოთაგანი მკჳდრად იპოვების საზღვართა მათთა. რამეთუ საზღვარ მათდა არს ზღუაჲ იგი პონტოჲსაჲ, სამკჳდრებელი ყოვლადვე ქრისტეანეთაჲ</strong>, მისაზღვრადმდე ქალდიაჲსა, ტრაპეზუნტიაჲ მუნ არს, საყოფელი იგი აფსარეაჲსაჲ და ნაფსაჲს ნავთ-სადგური. და არს ქალაქები იგი და ადგილები საბრძანებელად ქრისტჱს-მსახურისა იონთა მეფისა, რომელი მოსაყდრე არს დიდსა მას ქალაქსა კონსტანტინეპოვლისასა.“</p>
+                                <p>„ხოლო წმიდამან და ნეტარმან ჰაბო, ვითარცა <strong>იხილა კაცთა მის ადგილისათა გარდამეტებული ღმრთის-მოყუარებაჲ და ლოცვაჲ ყოვლისა მის ერისაჲ დაუცადებელი</strong>, შური საღმრთოჲ აღიღო, რამეთუ მოიჴსენა მან სიტყუაჲ იგი წმიდისა მოციქულისაჲ, ვითარმედ “კეთილ არს ბაძვაჲ კეთილისათჳს მარადის“.</p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="2" data-target="#infoModal" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>მე-10 საუკუნე</td>
+                        <td>გიორგი მერჩულე</td>
+                        <td>ცხოვრებათა ჟანრის ჰაგიოგრაფიული თხზულება</td>
+                        <td></td>
+                        <td>გრიგოლ ხანძთელის ცხოვრება (შრომაი და მოღუაწებაი ღირსად-ცხორებისაი წმიდისა და ნეტარისა მამისა ჩუენისა გრიგოლისი არქიმანდრიტისაი ხანძთისა და შატბერდისა აღმაშენებულისაი და მის თანა ხსენებაი მრავალთა მამათა ნეტართაი საკითხავი)</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>„წმიდაო მამაო, აჰა, იქმნა წადიერებაჲ ნებისა შენისაჲ. არამედ უფალმან ყავნ ნებაჲცა გულისაჲ ჩემისაჲ. რამეთუ მაქვს სულსა ჩემსა მონასტრისა ახლად შენებაჲ. აწ ბრძანე და <strong>მოვიხილნეთ მრავალნი ადგილნი აფხაზეთისანი</strong> და სადაცა სიწმიდემან შენმან ინებოს, მონასტრად აღვაშენოთ ადგილი იგი. და მოვლნეს ქვეყანანი, საგონებელნი სამონასტრედ, <strong>და არა სთნდეს წმიდასა მას</strong>. და ჰრქვა მეფესა მას: - <strong>არა არს მიწაჲ, არცა წყალი ქვეყანასა ამას, სადამცა მონასტერი აღეშენა</strong>. რამეთუ ტალანტი მონაზონისაჲ მარხვაჲ არს და <strong>ამას მიწასა ზედა ვერ ეგების მარხვაჲ სულისაგან ხორშაკისა მაკვდინებელისა</strong>.</p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="3" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>მე-20 საუკუნის 10-იანი წლები</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td></td>
+                        <td>„ორი პეპელა“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>
+                                    მახსოვს, <strong>შავი ზღვის</strong> პირად ვინმე ყრმა <br>
+                                    მივიდა, წყალში ქვა გადისროლა <br>
+                                    და მე მომესმა მისი სუსტი ხმა: <br>
+                                    „ოჰ, ასე ჰქრება ყოველი არსი, <br>
+                                    ვითარცა ეს ქვა, ვით ეს პეპელა, <br>
+                                    სწრაფ-უმიზნოა მათი სიკვდილი!~ — <br>
+                                    სთქვა და <strong>უკანვე გაბრუნდა</strong> ნელა.
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="4" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1920</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td></td>
+                        <td>საქართველო</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>
+                                    „წინააზია, შემდეგ ევროპა, <br>
+                                    გზაჯვარედინთა იყო რკალები, <br>
+                                    <strong>შავ ზღვაზე</strong> ნავთა დაუდევრობა, <br>
+                                    ფრთები, ტალღები და გრიგალები.“
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="5" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1918</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td></td>
+                        <td>„გემი „დალანდი“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>
+                                    „<strong>შავი ზღვის</strong> ზვირთებს მიაპობდა გემი `დალანდი~ <br>
+                                    და თვალზე მადგა განშორების მსუბუქი ცრემლი“
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="6" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1921-1927</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td></td>
+                        <td>„ლილიან ფრთებით“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>აჰა, შვენება! ოჰ, ეს ცისკარი <br>
+                                    ოცნებამ ბაგით გაგაანგარა. <br>
+                                    შემოგახვია შავი ზღვის ქარი <br>
+                                    ლილიან ქარად — ბაგე ანკარა.
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="7" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1923</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td>დაწერილია ბათუმში</td>
+                        <td>„გრიგალი“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>
+                                    „უცებ <strong>ზღვის</strong> ღელვა ქაფარეული <br>
+                                    მიმზერს მზისაგან, <br>
+                                    იგი მეძახის სიზმარეული <br>
+                                    სიცოცხლისაკენ. <br>
+                                    თავისუფალი, ლაღი, ძლიერი <br>
+                                    ბედისთვის ომი! <br>
+                                    ცეცხლის ნავები და კადნიერი <br>
+                                    ოცნების ნდომა.
+                                </p>
+                                <p>[...]</p>
+                                <p>
+                                    ოკეანესთან დამეგობრება <br>
+                                    ზღვებმა დამარხეს — <br>
+                                    <strong>ზღვა</strong> კვლავ უბრუნებს ჩემს ცხოვრებას <br>
+                                    აზრს, სიამაყეს.
+                                </p>
+                                <p>[...]</p>
+                                <p>
+                                    მზე <strong>ზღვაზე</strong> ჩადის: ეს ანკარა <br>
+                                    დეკადანსია. [...] <br>
+                                    <strong>ზღვას</strong> ალმაცერად დაენდო შუქი, <br>
+                                    გრიალებს ქარი [...] <br>
+                                    ქალნი ზღვის პირად იფენდენ კდემებს — <br>
+                                    <strong>ზღვას</strong> გასცქეროდენ. <br>
+                                    <strong>ზღვას</strong> გასცქეროდენ, ელოდენ გემებს <br>
+                                    და თან მღეროდნენ “.
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td>ბათუმი</td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="8" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1925</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td>„ფაზი“ უნდა აღნიშნავდეს ფაზისს - შავიზღვისპირა ქალაქის — ფოთის — ისტორიულ სახელწოდებას</td>
+                        <td>„შენ რაღას იტყვი?“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>„ასე დაბინდულ მყინვარს <br>
+                                    <strong>ზღვა</strong> რად შეღელავს შავი. <br>
+                                    რაზედ ღრიალებს <strong>ფაზი</strong> <br>
+                                    და ისტორიის ჩრდილის <br>
+                                    მზე ეფინება ნაზი <br>
+                                    ქუთაისსა და თბილისს.“
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td>ფოთი</td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="9" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1950-იანი წლები</td>
+                        <td>გურამ რჩეულიშვილი</td>
+                        <td>მოთხრობა</td>
+                        <td></td>
+                        <td>„ნელი ტანგო“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>„<strong>სოხუმის საცურაოზე</strong> ცალთვალა სომეხი ემიგრანტი გიტარას აკვნესებდა. ჩარდახის ქვეშ გახურებული ქაღალდის თამაში იყო. <strong>სილაზე, შუა მზის გულზე, უღმერთოდ იხრუკებოდნენ რუსები</strong>. გიტარა კი უკრავდა [...] <strong>ივანემ შორს დროშა დაინახა</strong>. ცოტა გული მოეცა. თავისუფალ ხელში თითქმის სულ გამოელია ძალა. <strong>მომატებული ტალღები თავზე უვლიდა მათ</strong>. ტანს ჰორიზონტალურად ვეღარ აჩერებდა, ახლა წყლის სიღრმიდან აძლევდა ბიძგებს სხეულსა და ზედ  დაკიდებულ თითქმის უგონო ცოლ-შვილს. ორივენი ბევრ წყალსა ყლაპავდნენ, რაც უფრო ამძიმებდა მის ტვირთს. სუნთქვა ეკვროდა, მაგრამ სულ ახლოს <strong>მოჰკრა წითელ დროშას თვალი და გამხნევდა — ნაპირამდე ორმოცდაათამდე მეტრიღა რჩებოდა.</strong> [...] <strong>ზღვაში</strong> დროშას გამოცილებულ ივანეს თვალთ დაუბნელდა.“</p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="10" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1928 - 1931</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td>ლექსში ექსპლიციტურ დონეზე თავად შავი ზღვა არაა სახელდებული, მაგრამ დასტურდება ზღვა (სავარაუდოდ, სწორედ — შავი) და რაც მთავარია, რევოლუციის მღელვარების აღსანიშნავად შედარებისას გამოყენებულია „შავი ზღვის შფოთი“.</td>
+                        <td>„მოგზაურობა ვერცხლისფერი ბილიკით“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p>„ჩვენ მოვიარეთ <br>
+                                    მიწა და წყალი, <br>
+                                    ჩვენ სიხალისით <br>
+                                    ვსუნთქავდით დროთი, <br>
+                                    სად ათასობით <br>
+                                    კაცი და ქალი <br>
+                                    გვხვდებოდა, როგორც <br>
+                                    შავი ზღვის შფოთი.“
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <button data-toggle="modal" data-id="11" data-target="#infoModal" type="button" type="button" class="btn btn-link u-none btn-sm" title="დათვალიერება"><i class="fas fa-info-circle"></i></button>
+                          <input type="checkbox" onchange="checkboxes()" name="person" class="data-select custom-checkbox" /> 
+                        </td>
+                        <td>1928-1931</td>
+                        <td>გალაკტიონ ტაბიძე</td>
+                        <td>ლექსი</td>
+                        <td></td>
+                        <td>„ერთხელ საღამოთი“</td>
+                        <td>
+                          <div class="text">
+                              <div class="text-content">
+                                <p><strong>„ბათუმის მზე ჩასავალად ენთო, <br>
+                                    მშვიდი ქარი ხმაურობდა ზღვაზე</strong>. <br>
+                                    ცხოვრებისგან დაღალული `დენდი“ <br>
+                                    გემს უცდიდა და მიამბო ასე: <br>
+                                    მახსოვს, ქალი, ვერონიკა, ლაღი, <br>
+                                    ორკესტრით და ხალხით ფეთქდა ბაღი, <br>
+                                    ვერონიკას მოსწყენოდა შუბლი, <br>
+                                    ვერონიკას შუბლზე აჩნდა ზრახვა; <br>
+                                    ჩამოსულთა მარტოობის ღრუბლი, <br>
+                                    არც შეხვედრა, არც ნაცნობის ნახვა.“
+                                </p>
+                              </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td><a href="record.html"><i class="fas fa-search-plus"></i></a></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>თარიღი</th>
+                        <th>ავტორი</th>
+                        <th>ტიპი</th>
+                        <th>დამ. ინფორმ.</th>
+                        <th>სათაური</th>
+                        <th>ტექსტი</th>
+                        <th>ადგილი</th>
+                        <th></th>
+                    </tr>
+                  </tfoot>
+              </table>
+            </div>
+            
+        </div>
+        <!-- /row -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">წინა</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">შემდეგი</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div> <!-- /container-fluid -->
+    </div> <!-- /main-content -->
+
+    <div class="cookie-banner" style="display: none;">
+      <p>ამ ვებგვერდის გამოყენებით თქვენ ეთანხმებით ილიაუნის <a href="https://iliauni.edu.ge/ge/privacy-policy" target="blank">კონფიდენციალურობისა</a> და <a href="https://iliauni.edu.ge/ge/cookie-files" target="blank">ქუქი-ფაილების</a> პოლიტიკას.</p>
+      <div>
+          <button class="btn btn-primary close-cookies">თანახმობა</button>
+      </div>
+    </div>
+      
+    <footer>
+        <div class="footer">
+          <div>
+              <a href="https://www.iliauni.edu.ge"><img src="img/isu-logo.svg" alt="ISU"></a>
+              <a href="mailto:dh@iliauni.edu.ge"><img src="img/dh-isu.svg" alt="DH@ISU" style="height: 30px;"></a>
+          </div>
+          <div>&copy; 2021 <span id="current-date-ft"></span> ილიას სახელმწიფო უნივერსიტეტი. შედარებითი ლიტერატურის ინსტიტუტი</div>
+        </div>
+    </footer>
+  </div> <!-- /wrapper -->
+
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="recordTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="modalmap" class="modal-map"></div>
+            <div class="modal-body">
+              <details class="meta-desc">
+                <summary>მეტამონაცემები</summary>
+                <p id="date"></p>
+                <p id="author"></p>
+                <p id="type"></p>
+                <p id="addInfo"></p>
+                <p id="title"></p>
+                <p id="place"></p>
+              </details>
+              <div class="divider"></div>
+              <div id="text"></div>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-primary" href="record.html">დაწვრილებით</a>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">დახურვა</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Text compare modal -->
+    <div id="compareModal" class="compare-modal d-none">
+      <div class="header">
+        <h2>ტექსტის შედარება</h2>
+        <button data-close-button class="btn btn-link u-none close">&times;</button>
+      </div>
+      <div class="compare-modal-body">
+        <div class="element">
+          <p class="title">აბოს წამება (წამებაი წმიდისა და ნეტარისა მოწამისა ქრისტეისისა ჰაბოისი, რომელი იწამა ქართლსა შინა, ქალაქსა ტფილისს, ხელითა სარკინოზთაითა, გამოთქმული იოვანე, ძისა საბანისი. ბრძანებითა ქრისტეის მიერ სამოელ ქართლის კათალიკოზისაითა)</p>
+          <details class="meta-desc" open>
+            <summary>მეტამონაცემები</summary>
+            <p>ავტორი:</p>
+            <p>თარიღი:</p>
+            <p>ტიპი:</p>
+            <p>დამატებითი ინფორმაცია:</p>
+            <p>ადგილი:</p>
+          </details>
+          <p><span>ტექსტი:</span> „და ნეტარი ჰაბო უფროჲსღა ჰმადლობდა ღმერთსა, რამეთუ <strong>იხილა მან ქუეყანაჲ იგი სავსჱ ქრისტჱს სარწმუნოებითა და არავინ ურწმუნოთაგანი მკჳდრად იპოვების საზღვართა მათთა. რამეთუ საზღვარ მათდა არს ზღუაჲ იგი პონტოჲსაჲ, სამკჳდრებელი ყოვლადვე ქრისტეანეთაჲ</strong>, მისაზღვრადმდე ქალდიაჲსა, ტრაპეზუნტიაჲ მუნ არს, საყოფელი იგი აფსარეაჲსაჲ და ნაფსაჲს ნავთ-სადგური. და არს ქალაქები იგი და ადგილები საბრძანებელად ქრისტჱს-მსახურისა იონთა მეფისა, რომელი მოსაყდრე არს დიდსა მას ქალაქსა კონსტანტინეპოვლისასა.“</p>
+          <p>„ხოლო წმიდამან და ნეტარმან ჰაბო, ვითარცა <strong>იხილა კაცთა მის ადგილისათა გარდამეტებული ღმრთის-მოყუარებაჲ და ლოცვაჲ ყოვლისა მის ერისაჲ დაუცადებელი</strong>, შური საღმრთოჲ აღიღო, რამეთუ მოიჴსენა მან სიტყუაჲ იგი წმიდისა მოციქულისაჲ, ვითარმედ “კეთილ არს ბაძვაჲ კეთილისათჳს მარადის“.</p>
+          <details class="meta-desc">
+            <summary>კომენტარი</summary>
+              <p>თხზულების ტექსტის გაუგებარი ან ძნელად გასაგები ადგილის ახსნა-განმარტება. ეკუთვნის გამომცემელს ან რედაქტორს და ჩვეულებრივ ძირითადი ტექსტის შემდეგ იბეჭდება.</p>
+              <p>გალაკტიონ ტაბიძემ იმთავითვე დაიმკვიდრა „გენიალური გალაკტიონის“ და „პოეტების მეფის“ სახელი. „მე და ღამემ“, „მთაწმინდის მთვარემ“, „ლურჯა ცხენებმა“, „სილაჟვარდემ...“, „მერიმ“ და მრავალმა სხვა ლექსმა მკითხველს წარმოუდგინა სრულიად ახლებური პოეტური სამყარო, ქართული ბგერის დიდებული კეთილხმოვანება, სიტყვის მოქნილობა, საოცარი უნარი რიტმის, ფერის, ტონისა თუ ნახევარტონების გადმოცემისა.</p>
+          </details>
+          <a class="btn btn-primary btn-sm mt-4" href="record.html">დაწვრილებით</a>
+        </div>
+        <div class="element">
+          <p class="title">გრიგოლ ხანძთელის ცხოვრება (შრომაი და მოღუაწებაი ღირსად-ცხორებისაი წმიდისა და ნეტარისა მამისა ჩუენისა გრიგოლისი არქიმანდრიტისაი ხანძთისა და შატბერდისა აღმაშენებულისაი და მის თანა ხსენებაი მრავალთა მამათა ნეტართაი საკითხავი)</p>
+          <details class="meta-desc" open>
+            <summary>მეტამონაცემები</summary>
+            <p>ავტორი:</p>
+            <p>თარიღი:</p>
+            <p>ტიპი:</p>
+            <p>დამატებითი ინფორმაცია:</p>
+            <p>ადგილი:</p>
+          </details>
+          <p><span>ტექსტი:</span> „წმიდაო მამაო, აჰა, იქმნა წადიერებაჲ ნებისა შენისაჲ. არამედ უფალმან ყავნ ნებაჲცა გულისაჲ ჩემისაჲ. რამეთუ მაქვს სულსა ჩემსა მონასტრისა ახლად შენებაჲ. აწ ბრძანე და <strong>მოვიხილნეთ მრავალნი ადგილნი აფხაზეთისანი</strong> და სადაცა სიწმიდემან შენმან ინებოს, მონასტრად აღვაშენოთ ადგილი იგი. და მოვლნეს ქვეყანანი, საგონებელნი სამონასტრედ, <strong>და არა სთნდეს წმიდასა მას</strong>. და ჰრქვა მეფესა მას: - <strong>არა არს მიწაჲ, არცა წყალი ქვეყანასა ამას, სადამცა მონასტერი აღეშენა</strong>. რამეთუ ტალანტი მონაზონისაჲ მარხვაჲ არს და <strong>ამას მიწასა ზედა ვერ ეგების მარხვაჲ სულისაგან ხორშაკისა მაკვდინებელისა</strong>.</p>
+          <details class="meta-desc">
+            <summary>კომენტარი</summary>
+              <p>თხზულების ტექსტის გაუგებარი ან ძნელად გასაგები ადგილის ახსნა-განმარტება. ეკუთვნის გამომცემელს ან რედაქტორს და ჩვეულებრივ ძირითადი ტექსტის შემდეგ იბეჭდება.</p>
+              <p>გალაკტიონ ტაბიძემ იმთავითვე დაიმკვიდრა „გენიალური გალაკტიონის“ და „პოეტების მეფის“ სახელი. „მე და ღამემ“, „მთაწმინდის მთვარემ“, „ლურჯა ცხენებმა“, „სილაჟვარდემ...“, „მერიმ“ და მრავალმა სხვა ლექსმა მკითხველს წარმოუდგინა სრულიად ახლებური პოეტური სამყარო, ქართული ბგერის დიდებული კეთილხმოვანება, სიტყვის მოქნილობა, საოცარი უნარი რიტმის, ფერის, ტონისა თუ ნახევარტონების გადმოცემისა.</p>
+          </details>
+          <a class="btn btn-primary btn-sm mt-4" href="record.html">დაწვრილებით</a>
+        </div>
+        <div class="element">
+          <p class="title">„მოგზაურობა ვერცხლისფერი ბილიკით“</p>
+          <details class="meta-desc" open>
+            <summary>მეტამონაცემები</summary>
+            <p>ავტორი:</p>
+            <p>თარიღი:</p>
+            <p>ტიპი:</p>
+            <p>დამატებითი ინფორმაცია:</p>
+            <p>ადგილი:</p>
+          </details>
+          <p><span>ტექსტი:</span> „ჩვენ მოვიარეთ <br>
+            მიწა და წყალი, <br>
+            ჩვენ სიხალისით <br>
+            ვსუნთქავდით დროთი, <br>
+            სად ათასობით <br>
+            კაცი და ქალი <br>
+            გვხვდებოდა, როგორც <br>
+            შავი ზღვის შფოთი.“
+        </p>
+        <details class="meta-desc">
+          <summary>კომენტარი</summary>
+            <p>თხზულების ტექსტის გაუგებარი ან ძნელად გასაგები ადგილის ახსნა-განმარტება. ეკუთვნის გამომცემელს ან რედაქტორს და ჩვეულებრივ ძირითადი ტექსტის შემდეგ იბეჭდება.</p>
+            <p>გალაკტიონ ტაბიძემ იმთავითვე დაიმკვიდრა „გენიალური გალაკტიონის“ და „პოეტების მეფის“ სახელი. „მე და ღამემ“, „მთაწმინდის მთვარემ“, „ლურჯა ცხენებმა“, „სილაჟვარდემ...“, „მერიმ“ და მრავალმა სხვა ლექსმა მკითხველს წარმოუდგინა სრულიად ახლებური პოეტური სამყარო, ქართული ბგერის დიდებული კეთილხმოვანება, სიტყვის მოქნილობა, საოცარი უნარი რიტმის, ფერის, ტონისა თუ ნახევარტონების გადმოცემისა.</p>
+        </details>
+        <a class="btn btn-primary btn-sm mt-4" href="record.html">დაწვრილებით</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="alert alert-secondary m-0">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="text-danger font-weight-bold">დასაშვებია მხოლოდ ორი და/ან ოთხზე ნაკლები ჩანაწერის შედარება!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- English description modal -->
+
+<div class="modal modal-lang fade" id="english" tabindex="-1" role="dialog" aria-labelledby="englishDescription" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h1 class="modal-title" id="englishModalLabel">Black Sea Representation in Literary and Historical sources (BSRLH)</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <p>Black Sea Representation in Literary and Historical sources (BSRLH) has been funded by the Ilia State University (ISU) and its Institute of Comparative Literature...</p>
+          <p><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam explicabo eaque, numquam hic id dolorem labore autem iure nihil exercitationem. Suscipit ullam assumenda in, temporibus possimus nesciunt officia quo similique?</span><span>Dolore eum sunt labore velit voluptas omnis voluptates, error molestias harum adipisci vitae cum maiores quisquam explicabo cupiditate mollitia quibusdam, quasi illo unde consectetur eligendi aut! Necessitatibus tempora iusto maiores.</span><span>Quis vero quae consequatur maxime? Explicabo error odit sed, doloribus atque placeat omnis perferendis laborum, quaerat eligendi dignissimos officia nihil cumque eius corporis officiis impedit fugiat! Dolorem rerum totam deleniti!</span><span>Voluptates nemo nihil eligendi expedita velit ipsam tenetur, quos neque non quae laborum itaque cumque tempore explicabo? Id nobis fugiat, nesciunt aut unde, alias distinctio odio cum voluptate itaque omnis!</span><span>Debitis reiciendis magni suscipit minus nostrum reprehenderit iste officia sed, laborum, quidem dolore, provident atque quam placeat ut neque praesentium esse rem repellendus ipsa in eligendi! Impedit et nulla adipisci.</span><span>Dolorem, assumenda hic. Delectus eveniet, obcaecati cum ea ullam neque quae quibusdam accusantium quis incidunt nisi nobis odio consequuntur saepe itaque id tempora ipsam perferendis reiciendis blanditiis placeat tenetur sapiente.</span><span>Dolor eius nulla, magni obcaecati rem labore, tempora harum eum modi porro deserunt eaque aspernatur officiis magnam. Dolor itaque excepturi sunt aspernatur modi minima, vero molestiae laborum ad tenetur delectus?</span><span>Fuga quae praesentium blanditiis, quia at adipisci ipsam quos nisi sit quaerat totam a modi corrupti magnam nemo corporis earum voluptate. Non vel, consequatur doloribus culpa labore porro fuga quos?</span><span>Officiis commodi, fuga rerum asperiores unde, et amet natus voluptatum recusandae ab porro vitae delectus tempore a. Voluptatum accusantium et repellendus animi nisi? Nostrum ad ipsa, deleniti quia exercitationem id.</span><span>Ex quam consequatur eligendi qui iure harum earum, similique soluta facilis aut, autem saepe aliquam, perspiciatis magnam ratione atque architecto! Temporibus omnis hic commodi quaerat facere veniam voluptas quos blanditiis?</span></p>
+      </div>
+      <div class="modal-footer">
+          <p>&#169; 2021 <span class="current-year-eng"></span>. Ilia State University, <a href="https://research.iliauni.edu.ge/en/institution/3-institute-of-comparative-literature" target="blank">Institute of Comparative Literature</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="js/leaflet/leaflet-providers.js"></script>
+    <script src="js/printThis.js"></script>
+
+    <script>
+
+      // Generate year in footer
+      let currentYear = new Date().getFullYear();      
+      if (currentYear > 2021) {
+          document.getElementById("current-date-ft").innerHTML = " - " + currentYear;
+          document.querySelector(".current-year-eng").innerHTML = " - " + currentYear;
+      }
+
+      // Data selection checkboxes
+      let uncheck = document.getElementsByClassName("custom-checkbox"),
+            inputElems = document.getElementsByClassName("custom-checkbox"),
+            checkcount = document.getElementById("checkcount"),
+            compare = document.getElementById("compareText"),
+            trashbox = document.getElementById("trash");
+        
+        function checkboxes() {
+          let count = 0;
+          for (var i=0; i<inputElems.length; i++) {       
+              if (inputElems[i].type == "checkbox" && inputElems[i].checked == true){
+                count++;
+                trashbox.classList.remove("btn-disabled");
+              }
+              if (count == 0){
+                trashbox.classList.add("btn-disabled");
+                
+              }
+              if (count ==2 || count ==3) {
+                compare.classList.remove("btn-disabled");
+                compare.removeAttribute("disabled");
+              }
+              else if (count >3){
+                revealMessage();
+                compare.classList.add("btn-disabled");
+                compare.setAttribute("disabled", true);
+              }
+              else {
+                compare.classList.add("btn-disabled");
+                compare.setAttribute("disabled", true);
+              }
+          }
+          checkcount.innerHTML = count;
+        }
+
+        function revealMessage() {
+          $('#alertModal').modal('show');
+        }
+        
+        // Data selection uncheck checkboxes
+        function uncheckElements(e) {
+          for(var i=0; i<uncheck.length; i++) {
+            if(uncheck[i].type=="checkbox") {
+              event.preventDefault();
+              uncheck[i].checked=false;
+              checkcount.innerHTML = 0;
+              trashbox.classList.add("btn-disabled");
+              compare.classList.add("btn-disabled");
+              compare.setAttribute("disabled", true);
+            }
+          }
+        }
+    
+      // Info modal
+      $(function(){
+        $('#infoModal').modal({
+            keyboard: true,
+            backdrop: "static",
+            show:false,
+
+        }).on('show.bs.modal', function(){
+            // var getIdFromRow = $(event.target).closest('tr').data('id');
+            var date = $(event.target).closest('tr').find('td:eq( 1 )').html();
+            var author = $(event.target).closest('tr').find('td:eq( 2 )').html();
+            var type = $(event.target).closest('tr').find('td:eq( 3 )').html();
+            var info = $(event.target).closest('tr').find('td:eq( 4 )').html();
+            var title = $(event.target).closest('tr').find('td:eq( 5 )').html();
+            var place = $(event.target).closest('tr').find('td:eq( 7 )').html();
+            var textContent = $(event.target).closest('tr').find('td:eq( 6)').html();
+            
+            $(this).find('#recordTitle').html($('<b>' + title  + '</b>'));
+            $(this).find('#date').html('<b>თარიღი</b>: ' + date);
+            $(this).find('#author').html('<b>ავტორი</b>: ' + author);
+            $(this).find('#type').html('<b>ტიპი</b>: ' + type);
+            $(this).find('#addInfo').html('<b>დამატებითი ინფორმაცია</b>: ' + info);
+            $(this).find('#title').html('<b>სათაური</b>: ' + title);
+            $(this).find('#place').html('<b>ადგილი</b>: ' + place);
+            $(this).find('#text').html('<b>ტექსტი</b>: ' + textContent).parent().find('div').removeClass("text").addClass("d-inline");
+        });
+
+      });
+        
+      // Leaflet
+      const map = L.map('modalmap', {
+          center: [42.0016,41],
+          zoom: 6,
+          animate: true, duration: 1
+      });
+
+      const mapLight = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+      }).addTo(map);
+
+      const geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#001826",
+        color: "#fff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1,
+      };
+
+      const marker = L.circleMarker([41.617227500804155, 41.63461790103842], geojsonMarkerOptions).addTo(map)
+      .bindPopup("<b>ბათუმი</b>");
+
+      // Show/hide filters btn
+      $("#showFilters").click(function(){
+        $("#showFilters").toggleClass("inactive");
+      })
+
+      // Map in modal
+      $('#infoModal').on('show.bs.modal', function (e) {
+        setTimeout(function () {
+        map.invalidateSize();
+        }, 200);
+      })
+
+      // thead sort icon active class selector
+      let sortIcon = document.querySelectorAll(".records-table thead i")
+
+      sortIcon.forEach(a =>{
+        a.addEventListener("click", function() {
+          sortIcon.forEach(btn => btn.classList.remove("active"));
+          this.classList.add("active")
+        })
+      })
+
+      /* Table Sorting */
+      function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("recordsTable");
+      switching = true;
+      dir = "asc"; 
+      
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch= true;
+                break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+                }
+            }
+            }
+            if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount ++;      
+            } else {
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+            }
+        }
+      }
+
+      // Text compare modal
+      const compareModal = document.querySelector("#compareModal")
+      const closeModalBtn = document.querySelector('[data-close-button]');
+
+      function openCompareModal() {
+        compareModal.classList.remove('d-none');
+        document.body.style.overflow = "hidden";
+      }
+
+      closeModalBtn.addEventListener('click', () => {
+        compareModal.classList.add('d-none');
+        document.body.style.overflow = "visible";
+      });
+
+      // Coockies
+      if (localStorage.getItem('cookieSeen') != 'shown') {
+          $(".cookie-banner").delay(2000).fadeIn();
+          localStorage.setItem('cookieSeen','shown')
+      };
+          $(".close-cookies").click(function() {
+          $(".cookie-banner").fadeOut();
+      })
+
+      // Generate URL and date for print content
+      let currentUrl = window.location.href;
+
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var yyyy = today.getFullYear();
+      today = mm + '/' + dd + '/' + yyyy;
+
+      // Print table
+      $('#printTable').on("click", function () {
+        $('#recordsTable').printThis({
+          importCSS: true,
+          header: "<h1 class='table-title-print'>შავი ზღვის სივრცის რეპრეზენტაცია ქართულ ლიტერატურასა და ისტორიოგრაფიაში</h1>",
+          footer: "ხელმისაწვდომია: " + currentUrl + "<br/>წვდომის თარიღი: " + today
+        });
+      });
+
+    </script>
+
+    
+</body>
+</html>
